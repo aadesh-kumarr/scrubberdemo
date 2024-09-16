@@ -14,25 +14,16 @@ import { FaAddressBook } from "react-icons/fa";
 import type { Customerstype } from "@/types";
 import {
   useState,
-
   useEffect,
 } from "react";
 
 
-interface CustomersProps {
-  customers: Customerstype[];
-}
-
-const Customers: React.FC<CustomersProps> = () => {
+const Customers: React.FC = () => {
   const [customers, setCustomers] = useState<Customerstype[]>([]);
   const [filter, setFilter] = useState("");
   const [filteredCustomers, setFilteredCustomers] = useState<Customerstype[]>(
     []
   );
-
-
-
-
 
   const getTotalBalanceAmount = () => {
     return customers.reduce((total, customer) => total + customer.balanceAmount, 0);

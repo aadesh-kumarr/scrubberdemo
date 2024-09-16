@@ -9,9 +9,7 @@ import authorisation from "@/lib/authorization";
 import { useRouter } from "next/navigation";
 import { useCurrentUser } from "@/hooks/use-current-user";
 
-
-
-const CustomerComponent: React.Customerstype[] = () => {
+const CustomerComponent: React.FC = () => {
   const user = useCurrentUser();
   const Router = useRouter();
 
@@ -130,6 +128,6 @@ const CustomerComponent: React.Customerstype[] = () => {
   );
 };
 
-export default function CustomerDetail({ customers }: Props) {
-  return <CustomerComponent customers={customers} />;
+export default function CustomerDetail() {
+  return <CustomerComponent />;
 }

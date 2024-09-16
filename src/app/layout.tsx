@@ -10,11 +10,10 @@ import {
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
 import Link from "next/link";
-import Customers_Name from "@/components/ui/manual/customersection"; // Adjust the import path as needed
+import Customers_Name from "@/components/ui/manual/customersection";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import authorisation from "@/lib/authorization";
-import { Customerstype } from "@/types"; // Adjust the import path as needed
 
 import { IoMdAddCircleOutline } from "react-icons/io";
 const inter = Inter({ subsets: ["latin"] });
@@ -26,12 +25,10 @@ export const metadata: Metadata = {
 
 interface RootLayoutProps {
   children: React.ReactNode;
-  customers?: Customerstype[];
 }
 
 export default async function RootLayout({
   children,
-  customers = [],
 }: RootLayoutProps) {
   const session = await auth();
 
@@ -57,7 +54,7 @@ export default async function RootLayout({
             </div>
             <div className="z-10">
             {authorisation(session?.user?.email as string) && (
-              <Customers_Name customers={customers} />
+              <Customers_Name />
             )}
             </div>
             {children}

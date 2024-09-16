@@ -6,7 +6,7 @@ export default function SignIn() {
     <form
       action={async () => {
         "use server"
-        await signIn("google")
+        await signIn("google",)
       }}
     >
       <button className="border-slate-700 border-2  w-fit mt-44 rounded p-2 bg-zinc-800 text-white hover:border-black" type="submit"><p>Signin with Google<RiGoogleFill className="flex w-full content-center "/></p></button>

@@ -9,11 +9,9 @@ import authorisation from "@/lib/authorization";
 import { useRouter } from "next/navigation";
 import { useCurrentUser } from "@/hooks/use-current-user";
 
-interface Props {
-  customers: Customerstype[];
-}
 
-const CustomerComponent: React.FC<Props> = () => {
+
+const CustomerComponent: React.Customerstype[] = () => {
   const user = useCurrentUser();
   const Router = useRouter();
 

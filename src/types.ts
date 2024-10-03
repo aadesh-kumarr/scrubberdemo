@@ -15,20 +15,20 @@ export interface Customerstype {
     _id: string;
     customer_id: String;
     date: Date,
-    quantity: Number;
-    rate: Number;
-    amountReceived: Number; 
+    quantity: number;
+    rate: number;
+    amountReceived: number; 
     balanceAmount: number;
     category:  String;
     unit:  String;
-    size: Number;
-    total: Number;
-    last_balance: Number;
+    size: number;
+    total: number;
+    last_balance: number;
   }
 
   export interface Paymenttype{
     customer_id:String,
     date: Date,
-    payment:Number
+    payment:number
   
   }

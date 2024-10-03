@@ -8,7 +8,7 @@ import type { Customerstype, Orderstype, Paymenttype } from "@/types";
 import authorisation from "@/lib/authorization";
 import { useRouter } from "next/navigation";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import PaymentCard from "@/components/ui/manual/paymentcard";
+import Calendar from "@/components/ui/manual/calenders";
 
 const CustomerComponent: React.FC = () => {
   const user = useCurrentUser();
@@ -111,8 +111,13 @@ const CustomerComponent: React.FC = () => {
       setErrorMessage("Error submitting payment.");
     }
 
-    const updated_balance = (customer?.balanceAmount ?? 0) - (Number(paymentInput?.payment) ?? 0);
-    console.log(updated_balance,customer?.balanceAmount,Number(paymentInput?.payment))
+    const updated_balance =
+      (customer?.balanceAmount ?? 0) - (Number(paymentInput?.payment) ?? 0);
+    console.log(
+      updated_balance,
+      customer?.balanceAmount,
+      Number(paymentInput?.payment)
+    );
     try {
       const res = await fetch(`/api/add_payment?id=${customer?._id}`, {
         method: "PATCH",
@@ -124,14 +129,12 @@ const CustomerComponent: React.FC = () => {
 
       if (!res.ok) {
         throw new Error("Failed to update balance");
-      }
-      else{
-        window.location.reload()
+      } else {
+        window.location.reload();
       }
     } catch (error) {
       console.error("Error updating balance:", error);
     }
-
   };
 
   if (!customer) {
@@ -179,7 +182,9 @@ const CustomerComponent: React.FC = () => {
                 Submit
               </button>
             </div>
-            {errorMessage && <p className="text-red-500 mt-2">{errorMessage}</p>}
+            {errorMessage && (
+              <p className="text-red-500 mt-2">{errorMessage}</p>
+            )}
           </div>
         </div>
       </div>
@@ -188,27 +193,7 @@ const CustomerComponent: React.FC = () => {
         <h1 className="text-2xl text-white mx-auto text-center bg-black p-2">
           Payments
         </h1>
-        <div className="flex flex-row overflow-x-scroll p-3 no-scrollbar">
-          {Array.isArray(paymentdata) && paymentdata.length > 0 ? (
-            paymentdata
-              .sort(
-                (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-              )
-              .map((payment) => (
-                <PaymentCard
-                  key={payment._id}
-                  date={new Date(payment.date).toLocaleDateString("en-GB", {
-                    year: "numeric",
-                    month: "2-digit",
-                    day: "2-digit",
-                  })}
-                  amount={Number(payment.payment)}
-                />
-              ))
-          ) : (
-            <CommingSoon />
-          )}
-        </div>
+        <Calendar array={paymentdata  || [] } />
       </div>
 
       <h1 className="text-2xl text-white mx-auto text-center bg-black p-2">

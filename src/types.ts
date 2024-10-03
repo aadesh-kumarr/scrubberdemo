@@ -25,3 +25,10 @@ export interface Customerstype {
     total: Number;
     last_balance: Number;
   }
+
+  export interface Paymenttype{
+    customer_id:String,
+    date: Date,
+    payment:Number
+  
+  }

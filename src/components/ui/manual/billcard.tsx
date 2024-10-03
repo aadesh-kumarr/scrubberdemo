@@ -27,7 +27,7 @@ export default function BillCard({
         <p>{customerName || "Customer name"}</p>
       </div>
 
-      <div className="flex mx-auto flex-row text-center w-1/2 p-4 rounded justify-center text-zinc-200">
+      <div className="flex mx-auto flex-row text-center  p-4 rounded justify-center text-zinc-200">
         <div className="text-left pl-3">
           <p>Quantity: </p>
           <p>Rate: </p>

@@ -1,4 +1,5 @@
 import mongoose ,{Schema} from "mongoose";
+import { type } from "os";
 
 mongoose.connect(process.env.mongodb_url)
 mongoose.Promise=global.Promise
@@ -42,3 +43,13 @@ const orderSchema= new Schema({
 const Orders =mongoose.models.Orders || mongoose.model("Orders",orderSchema);
 export {Orders};
 
+
+
+const paymentSchema=new Schema({
+  customer_id:{ type: String, required: true },
+  date:{type: Date, required:true},
+  payment:{type:Number,required:true}
+})
+
+const Payment=mongoose.models.Payment || mongoose.model('Payment',paymentSchema)
+export {Payment};

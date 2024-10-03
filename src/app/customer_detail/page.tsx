@@ -193,7 +193,7 @@ const CustomerComponent: React.FC = () => {
         <h1 className="text-2xl text-white mx-auto text-center bg-black p-2">
           Payments
         </h1>
-        <Calendar array={paymentdata  || [] } />
+        <Calendar array={paymentdata as unknown  as Paymenttype[]} />
       </div>
 
       <h1 className="text-2xl text-white mx-auto text-center bg-black p-2">

@@ -26,7 +26,9 @@ const Customers: React.FC = () => {
   );
 
   const getTotalBalanceAmount = () => {
+    if(customers) 
     return customers.reduce((total, customer) => total + customer.balanceAmount, 0);
+ 
   };
 
   const marketsum = getTotalBalanceAmount();
@@ -84,16 +86,22 @@ const Customers: React.FC = () => {
       </div>
       <hr className="w-full py-2 border-zinc-100 " />
       <SheetDescription>
-        {filteredCustomers.length > 0 ? (
+      {
+        
+        filteredCustomers.length > 0 ? (
           filteredCustomers.map((customer) => (
-            <Link key={customer._id} href={`/customer_detail?id=${customer._id}`} passHref>
+            <Link key={customer._id} 
+            href={`/customer_detail?id=${customer._id}`} 
+            passHref>
               <div className="p-2 pl-4 bg-zinc-900 mb-1 text-zinc-100 rounded flex justify-between">
                 <p className="text-lg">{customer.name}</p>
                 <p className="text-lg">{customer.balanceAmount}</p>
               </div>
             </Link>
           ))
-        ) : (
+        )
+        
+        : (
           <p className="bg-zinc-600 rounded mb-1 px-2 pb-1">No customers found</p>
         )}
       </SheetDescription>

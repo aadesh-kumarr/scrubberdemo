@@ -48,7 +48,7 @@ export default async function RootLayout({
                   </Link>
                 )}
                 <p className="rounded text-xl mx-auto">
-                  <Link href="/">Lostronaunt</Link>
+                  <Link href="/">Lostronaunt(This is demo server)</Link>
                 </p>
               </div>
             </div>
